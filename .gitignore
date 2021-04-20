@@ -1,5 +1,6 @@
 vert.spv
 frag.spv
+*.o
 
 render-nodes-minimal/render-nodes-minimal
 vulkan-minimal/vulkan-minimal
