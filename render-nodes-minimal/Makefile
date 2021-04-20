@@ -2,11 +2,12 @@ TARGET=render-nodes-minimal
 
 all: Makefile $(TARGET)
 
-$(TARGET): main.c
-	gcc -ggdb -O0 -Wall -std=c99 \
-		`pkg-config --libs --cflags glesv2 egl gbm` \
-		-o $(TARGET) \
-		main.c
+%.o: %.c
+	gcc -c $< -I/usr/include -Wall -Wpedantic -O0 -std=c99 `pkg-config --cflags glesv2 egl gbm` -o $@
+
+
+$(TARGET): main.o
+	gcc $^ -ggdb3 `pkg-config --libs glesv2 egl gbm` -o $@
 
 clean:
 	rm -f $(TARGET)
