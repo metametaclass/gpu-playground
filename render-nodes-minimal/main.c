@@ -53,7 +53,7 @@ main (int32_t argc, char* argv[])
 {
    bool res;
 
-   int32_t fd = open ("/dev/dri/renderD128", O_RDWR);
+   int32_t fd = open (argv[1], O_RDWR);
    assert (fd > 0);
 
    struct gbm_device *gbm = gbm_create_device (fd);
